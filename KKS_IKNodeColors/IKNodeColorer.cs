@@ -8,7 +8,7 @@ using UnityEngine;
 namespace KKS_IKNodeColors
 {
 	[BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
-	public class Plugin : BaseUnityPlugin
+	public class IKNodeColorer : BaseUnityPlugin
 	{
 		private static ConfigEntry<Color> _leftHand;
 		private static ConfigEntry<Color> _rightHand;
@@ -30,9 +30,9 @@ namespace KKS_IKNodeColors
 
 		private void Awake()
 		{
-			// Plugin startup logic
-			//Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
-			Harmony.CreateAndPatchAll(typeof(Plugin));
+			// IKNodeColorer startup logic
+			//Logger.LogInfo($"IKNodeColorer {PluginInfo.PLUGIN_GUID} is loaded!");
+			Harmony.CreateAndPatchAll(typeof(IKNodeColorer));
 
 			_leftHand = Config.Bind("Colors", "Left Hand", new Color(0f, 1f, 0.333f));
 			_rightHand = Config.Bind("Colors", "Right Hand", new Color(0.666f, 1f, 0f));
