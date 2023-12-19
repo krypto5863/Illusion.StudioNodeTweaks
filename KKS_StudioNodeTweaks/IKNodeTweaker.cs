@@ -9,6 +9,7 @@ using UnityEngine;
 namespace KKS_StudioNodeTweaks
 {
 	[BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+	[BepInProcess("CharaStudio")]
 	[SuppressMessage("ReSharper", "InconsistentNaming")]
 	public class IKNodeTweaker : BaseUnityPlugin
 	{
