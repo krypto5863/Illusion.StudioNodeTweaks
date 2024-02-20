@@ -7,13 +7,18 @@ using Studio;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
-namespace KKS_StudioNodeTweaks
+namespace StudioNodeTweaks
 {
-	[BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+	[BepInPlugin(GUID, DisplayName, Version)]
 	[BepInProcess("CharaStudio")]
+	[BepInProcess("StudioNEOV2")]
 	[SuppressMessage("ReSharper", "InconsistentNaming")]
 	public class StudioNodeTweaks : BaseUnityPlugin
 	{
+		public const string GUID = "StudioNodeTweaks";
+		public const string DisplayName = "Studio Node Tweaks";
+		public const string Version = "1.0.0";
+
 		internal static StudioNodeTweaks _pluginInstance;
 		internal static ManualLogSource _pluginLogger => _pluginInstance.Logger;
 
@@ -40,19 +45,35 @@ namespace KKS_StudioNodeTweaks
 
 			ColorConfigDictionary = new Dictionary<string, ConfigEntry<Color>>()
 			{
-				{ "cf_t_hand_R(work)", Config.Bind("Colors", "Right Hand", new Color(1f, 1.0f, 0f), "Restart Required") },
-				{ "cf_t_hand_L(work)", Config.Bind("Colors", "Left Hand", new Color(0f, 0f, 1f), "Restart Required") },
-				{ "cf_t_elbo_R(work)", Config.Bind("Colors", "Right Elbow", new Color(1f, 0f, 1.0f), "Restart Required") },
-				{ "cf_t_elbo_L(work)", Config.Bind("Colors", "Left Elbow", new Color(0f, 1f, 0f), "Restart Required") },
-				{ "cf_t_shoulder_R(work)", Config.Bind("Colors", "Right Shoulder", new Color(0f, 1f, 1f), "Restart Required") },
-				{ "cf_t_shoulder_L(work)", Config.Bind("Colors", "Left Shoulder", new Color(1f, 0.5f, 0f), "Restart Required") },
+#if HS2
+				{ "f_t_arm_r(work)", Config.Bind("Colors", "Right Hand", new Color(1f, 1.0f, 0f), "Restart Required") },
+				{ "f_t_arm_l(work)", Config.Bind("Colors", "Left Hand", new Color(0f, 0f, 1f), "Restart Required") },
+				{ "f_t_elbo_r(work)", Config.Bind("Colors", "Right Elbow", new Color(1f, 0f, 1.0f), "Restart Required") },
+				{ "f_t_elbo_l(work)", Config.Bind("Colors", "Left Elbow", new Color(0f, 1f, 0f), "Restart Required") },
+				{ "f_t_shoulder_r(work)", Config.Bind("Colors", "Right Shoulder", new Color(0f, 1f, 1f), "Restart Required") },
+				{ "f_t_shoulder_l(work)", Config.Bind("Colors", "Left Shoulder", new Color(1f, 0.5f, 0f), "Restart Required") },
+				{ "f_t_hips(work)", Config.Bind("Colors", "Waist", new Color(0.75f, 1f, 0f), "Restart Required") },
+				{ "f_t_thigh_r(work)", Config.Bind("Colors", "Right Hip", new Color(0f, 0.5f, 0.5f), "Restart Required") },
+				{ "f_t_thigh_l(work)", Config.Bind("Colors", "Left Hip", new Color(1f, 0f, 0f), "Restart Required") },
+				{ "f_t_knee_r(work)", Config.Bind("Colors", "Right Knee", new Color(1.0f, 0.5f, 0.5f), "Restart Required") },
+				{ "f_t_knee_l(work)", Config.Bind("Colors", "Left Knee", new Color(0.5f, 0f, 0.5f), "Restart Required") },
+				{ "f_t_leg_r(work)", Config.Bind("Colors", "Right Foot", new Color(0.7f, 0f, 0.7f), "Restart Required") },
+				{ "f_t_leg_l(work)", Config.Bind("Colors", "Left Foot", new Color(1f, 0.84f, 0f), "Restart Required") },
+#else
+				{ "cf_t_hand_r(work)", Config.Bind("Colors", "Right Hand", new Color(1f, 1.0f, 0f), "Restart Required") },
+				{ "cf_t_hand_l(work)", Config.Bind("Colors", "Left Hand", new Color(0f, 0f, 1f), "Restart Required") },
+				{ "cf_t_elbo_r(work)", Config.Bind("Colors", "Right Elbow", new Color(1f, 0f, 1.0f), "Restart Required") },
+				{ "cf_t_elbo_l(work)", Config.Bind("Colors", "Left Elbow", new Color(0f, 1f, 0f), "Restart Required") },
+				{ "cf_t_shoulder_r(work)", Config.Bind("Colors", "Right Shoulder", new Color(0f, 1f, 1f), "Restart Required") },
+				{ "cf_t_shoulder_l(work)", Config.Bind("Colors", "Left Shoulder", new Color(1f, 0.5f, 0f), "Restart Required") },
 				{ "cf_t_hips(work)", Config.Bind("Colors", "Waist", new Color(0.75f, 1f, 0f), "Restart Required") },
-				{ "cf_t_waist_R(work)", Config.Bind("Colors", "Right Hip", new Color(0f, 0.5f, 0.5f), "Restart Required") },
-				{ "cf_t_waist_L(work)", Config.Bind("Colors", "Left Hip", new Color(1f, 0f, 0f), "Restart Required") },
-				{ "cf_t_knee_R(work)", Config.Bind("Colors", "Right Knee", new Color(1.0f, 0.5f, 0.5f), "Restart Required") },
-				{ "cf_t_knee_L(work)", Config.Bind("Colors", "Left Knee", new Color(0.5f, 0f, 0.5f), "Restart Required") },
-				{ "cf_t_leg_R(work)", Config.Bind("Colors", "Right Foot", new Color(0.7f, 0f, 0.7f), "Restart Required") },
-				{ "cf_t_leg_L(work)", Config.Bind("Colors", "Left Foot", new Color(1f, 0.84f, 0f), "Restart Required") },
+				{ "cf_t_waist_r(work)", Config.Bind("Colors", "Right Hip", new Color(0f, 0.5f, 0.5f), "Restart Required") },
+				{ "cf_t_waist_l(work)", Config.Bind("Colors", "Left Hip", new Color(1f, 0f, 0f), "Restart Required") },
+				{ "cf_t_knee_r(work)", Config.Bind("Colors", "Right Knee", new Color(1.0f, 0.5f, 0.5f), "Restart Required") },
+				{ "cf_t_knee_l(work)", Config.Bind("Colors", "Left Knee", new Color(0.5f, 0f, 0.5f), "Restart Required") },
+				{ "cf_t_leg_r(work)", Config.Bind("Colors", "Right Foot", new Color(0.7f, 0f, 0.7f), "Restart Required") },
+				{ "cf_t_leg_l(work)", Config.Bind("Colors", "Left Foot", new Color(1f, 0.84f, 0f), "Restart Required") },
+#endif
 			};
 
 			NodeTooltip.InitTooltip();
