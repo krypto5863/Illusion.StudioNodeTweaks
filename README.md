@@ -7,5 +7,7 @@ When mousing over a node, a tooltip will display a user friendly name that can b
 # Colorizes IK Nodes
 IK nodes can blend into each other when looking at them from certain angles and in certain poses. This applies some carefully selected colors to IK nodes, and only IK nodes, which heavily increase visibility. You can always change the colors or disable colorizing though.
 
+With this feature, you can also set the alpha values of nodes when they're unselected to make them easier to see.
+
 # Nodes Pulse Effect
 Nodes will do a small pulsing effect that pauses when you hover over the node so as to prevent the node from escaping your cursor. The idea is just to make them more distinguishable and easier to find with your eyes when looking at a cluttered scene.
