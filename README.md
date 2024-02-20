@@ -1,5 +1,6 @@
 # Illusion StudioNodeTweaks
 A simple plugin that does a few things with nodes to make it easier to pose in the studio. All options are toggleable in the config.
+[5Nnj2oWwTU.webm](https://github.com/krypto5863/Illusion_StudioNodeTweaks/assets/29824718/30449638-264e-45e9-ba0b-156a2fe69969)
 
 # Tooltips
 When mousing over a node, a tooltip will display a user friendly name that can be easily understood, such as Waist or Hand. Despite this, you may still get a raw bone name, but it's still much better than having no information. When mousing over the root node of characters, you will get their name. And with objects, you'll get their raw name.
