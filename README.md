@@ -3,6 +3,9 @@ A simple plugin that does a few things with nodes to make it easier to pose in t
 
 https://github.com/krypto5863/Illusion_StudioNodeTweaks/assets/29824718/8b80c0a3-daac-4040-9118-aa72e08480fe
 
+# Installation
+Grab the corresponding DLL for your game in the releases and place it into `Bepinex/plugins`
+
 # Tooltips
 When mousing over a node, a tooltip will display a user friendly name that can be easily understood, such as Waist or Hand. Despite this, you may still get a raw bone name, but it's still much better than having no information. When mousing over the root node of characters, you will get their name. And with objects, you'll get their raw name.
 
