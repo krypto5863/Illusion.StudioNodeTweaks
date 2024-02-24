@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Studio;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -73,10 +74,10 @@ namespace StudioNodeTweaks
 			_text.outlineColor = Color.black;
 			_text.outlineWidth = 0.33f;
 			_text.fontSharedMaterial.EnableKeyword(ShaderUtilities.Keyword_Outline);
-#if HS2
-			_text.ForceMeshUpdate(true);
-#else
+#if KKS
 			_text.ForceMeshUpdate(true, true);
+#else
+			_text.ForceMeshUpdate(true);
 #endif
 			_text.enableWordWrapping = false;
 			_text.fontStyle = FontStyles.Bold;
@@ -124,11 +125,12 @@ namespace StudioNodeTweaks
 
 			_text.SetText(text);
 
-#if HS2
-			_text.ForceMeshUpdate(true);
-#else
+#if KKS
 			_text.ForceMeshUpdate(true, true);
+#else
+			_text.ForceMeshUpdate(true);
 #endif
+
 			_imageComponent.rectTransform.sizeDelta =
 				_text.GetRenderedValues() + new Vector2(_text.margin.x * 2, _text.margin.y * 2);
 

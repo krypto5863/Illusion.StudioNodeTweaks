@@ -10,14 +10,17 @@ using UnityEngine;
 namespace StudioNodeTweaks
 {
 	[BepInPlugin(GUID, DisplayName, Version)]
-	[BepInProcess("CharaStudio")]
+#if HS2
 	[BepInProcess("StudioNEOV2")]
+#else
+	[BepInProcess("CharaStudio")]
+#endif
 	[SuppressMessage("ReSharper", "InconsistentNaming")]
 	public class StudioNodeTweaks : BaseUnityPlugin
 	{
 		public const string GUID = "StudioNodeTweaks";
 		public const string DisplayName = "Studio Node Tweaks";
-		public const string Version = "1.0.0";
+		public const string Version = "1.1.0";
 
 		internal static StudioNodeTweaks _pluginInstance;
 		internal static ManualLogSource _pluginLogger => _pluginInstance.Logger;
