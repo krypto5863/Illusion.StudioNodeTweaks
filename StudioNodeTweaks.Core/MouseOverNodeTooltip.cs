@@ -70,6 +70,37 @@ namespace StudioNodeTweaks
 			{ "cf_j_mune_nip02_l", "L. Nipple" },
 			{ "cf_j_mune_nip01_r", "R. Areola" },
 			{ "cf_j_mune_nip02_r", "R. Nipple" },
+			
+			{"cf_j_hand_r", "R. Hand"},
+			{"cf_j_hand_l", "L. Hand"},
+			{"cf_j_armlow01_r", "R. Elbow"},
+			{"cf_j_armlow01_l", "L. Elbow"},
+			{"cf_j_armup00_r", "R. Shoulder"},
+			{"cf_j_armup00_l", "L. Shoulder"},
+			{"cf_j_shoulder_r", "R. Clavicle"},
+			{"cf_j_shoulder_l", "L. Clavicle"},
+
+			{"cf_j_spine03", "Upper Spine"},
+			{"cf_j_spine02", "Middle Spine"},
+			{"cf_j_spine01", "Lower Spine"},
+			{"cf_j_kosi01", "Waist"},
+			{"cf_j_kosi02", "Hips"},
+			{"cf_j_hips", "Root"},
+
+			{"cf_j_legup00_r", "R. Thigh"},
+			{"cf_j_legup00_l", "L. Thigh"},
+
+			{"cf_j_leglow01_r", "R. Knee"},
+			{"cf_j_leglow01_l", "L. Knee"},
+
+			{"cf_j_foot01_r", "R. Foot"},
+			{"cf_j_foot01_l", "L. Foot"},
+
+			{"cf_j_foot02_r", "R. Ankle"},
+			{"cf_j_foot02_l", "L. Ankle"},
+
+			{"cf_j_toes01_r", "R. Toes"},
+			{"cf_j_toes01_l", "L. Toes"},
 #else
 
 			{ "cf_t_shoulder_r(work)", "R. Shoulder (IK)" },
@@ -127,6 +158,32 @@ namespace StudioNodeTweaks
 			{ "cf_j_bnip02_l", "L. Nipple" },
 			{ "cf_j_bnip02root_r", "R. Areola" },
 			{ "cf_j_bnip02_r", "R. Nipple" },
+
+			{"cf_j_hand_r", "R. Hand"},
+			{"cf_j_hand_l", "L. Hand"},
+			{"cf_j_forearm01_r", "R. Elbow"},
+			{"cf_j_forearm01_l", "L. Elbow"},
+			{"cf_j_arm00_r", "R. Shoulder"},
+			{"cf_j_arm00_l", "L. Shoulder"},
+			{"cf_j_shoulder_r", "R. Clavicle"},
+			{"cf_j_shoulder_l", "L. Clavicle"},
+
+			{"cf_j_spine02", "Upper Spine"},
+			{"cf_j_spine01", "Lower Spine"},
+			{"cf_j_waist01", "Waist"},
+			{"cf_j_hips", "Root"},
+
+			{"cf_j_thigh00_r", "R. Thigh"},
+			{"cf_j_thigh00_l", "L. Thigh"},
+
+			{"cf_j_leg01_r", "R. Knee"},
+			{"cf_j_leg01_l", "L. Knee"},
+
+			{"cf_j_leg03_r", "R. Foot"},
+			{"cf_j_leg03_l", "L. Foot"},
+
+			{"cf_j_toes_r", "R. Toes"},
+			{"cf_j_toes_l", "L. Toes"},
 #endif
 
 			{ "cf_j_neck", "Neck" },
