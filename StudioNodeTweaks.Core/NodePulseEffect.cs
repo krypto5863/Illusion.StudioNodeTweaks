@@ -34,5 +34,11 @@ namespace StudioNodeTweaks
 		{
 			_currentAnimation.Play();
 		}
+
+		private void OnDestroy()
+		{
+			_currentAnimation.Kill();
+			_currentAnimation = null;
+		}
 	}
 }

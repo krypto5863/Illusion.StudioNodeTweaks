@@ -16,8 +16,9 @@ namespace StudioNodeTweaks
 			{
 				return;
 			}
-
+#if DEBUG
 			StudioNodeTweaks._pluginLogger.LogInfo("Getting Transform target and name.");
+#endif
 
 			var transformName = guideObject?.transformTarget?.name;
 
@@ -25,13 +26,16 @@ namespace StudioNodeTweaks
 			{
 				return;
 			}
-
+#if DEBUG
 			StudioNodeTweaks._pluginLogger.LogInfo("Getting color");
+#endif
 
 			if (StudioNodeTweaks._pluginInstance.ColorConfigDictionary.TryGetValue(transformName.ToLower(),
 				    out var config))
 			{
+#if DEBUG
 				StudioNodeTweaks._pluginLogger.LogInfo("Color found! Applying...");
+#endif
 
 				guideObject.guideSelect.color = config.Value;
 				config.SettingChanged += (sender, args) => { AssignNodeColor(guideObject); };

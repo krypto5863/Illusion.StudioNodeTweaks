@@ -20,10 +20,12 @@ namespace StudioNodeTweaks
 	{
 		public const string GUID = "StudioNodeTweaks";
 		public const string DisplayName = "Studio Node Tweaks";
-		public const string Version = "1.0.2";
+		public const string Version = "1.0.3";
 
 		internal static StudioNodeTweaks _pluginInstance;
-		internal static ManualLogSource _pluginLogger => _pluginInstance.Logger;
+#if DEBUG
+		internal static ManualLogSource PluginLogger => _pluginInstance.Logger;
+#endif
 
 		internal ConfigEntry<bool> _animateNodes;
 		internal ConfigEntry<bool> _nodeTooltip;
