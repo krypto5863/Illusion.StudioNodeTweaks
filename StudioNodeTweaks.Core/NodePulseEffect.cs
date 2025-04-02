@@ -25,6 +25,16 @@ namespace StudioNodeTweaks
 			_currentAnimation = transform.DOScale(transform.localScale * 1.20f, 1f).SetLoops(-1, LoopType.Yoyo);
 		}
 
+		void OnDisable()
+		{
+			_currentAnimation.Pause();
+		}
+
+		void OnEnable()
+		{
+			_currentAnimation.Play();
+		}
+
 		public void OnPointerEnter(PointerEventData eventData)
 		{
 			_currentAnimation.Pause();

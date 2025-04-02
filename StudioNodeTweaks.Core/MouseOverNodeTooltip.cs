@@ -1,5 +1,6 @@
 ﻿using Studio;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,6 +13,8 @@ namespace StudioNodeTweaks
 
 	internal class MouseOverNodeTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	{
+		private static readonly Dictionary<string, string> BoneInfoNames;
+
 		private static readonly Dictionary<string, string> BonesUserFriendlyNames = new Dictionary<string, string>()
 		{
 #if HS2
@@ -190,6 +193,12 @@ namespace StudioNodeTweaks
 			{ "cf_j_head", "Head" },
 		};
 
+		static MouseOverNodeTooltip()
+		{
+			var boneInfo = Singleton<Info>.Instance.dicBoneInfo;
+			BoneInfoNames = boneInfo.Values.ToDictionary(d => d.bone, m => m.name);
+		}
+
 		internal static void AddComponent(Transform transform)
 		{
 			transform.gameObject.AddComponent<MouseOverNodeTooltip>();
@@ -222,7 +231,11 @@ namespace StudioNodeTweaks
 			}
 
 			//HS2 uses the same IK bone names as KKS just without the first letter.
-			_textToTooltip = (BonesUserFriendlyNames.TryGetValue(boneName.ToLower(), out var newName)) ? newName : boneName;
+			if (BonesUserFriendlyNames.TryGetValue(boneName.ToLower(), out _textToTooltip) == false &&
+			    BoneInfoNames.TryGetValue(boneName.ToLower(), out _textToTooltip) == false)
+			{
+				_textToTooltip = boneName;
+			}
 		}
 
 		public void OnPointerEnter(PointerEventData eventData)

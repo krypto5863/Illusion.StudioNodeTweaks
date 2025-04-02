@@ -20,7 +20,7 @@ namespace StudioNodeTweaks
 	{
 		public const string GUID = "StudioNodeTweaks";
 		public const string DisplayName = "Studio Node Tweaks";
-		public const string Version = "1.0.3";
+		public const string Version = "1.1";
 
 		internal static StudioNodeTweaks _pluginInstance;
 #if DEBUG
