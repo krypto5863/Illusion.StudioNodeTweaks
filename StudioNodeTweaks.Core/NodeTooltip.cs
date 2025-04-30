@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 namespace StudioNodeTweaks
 {
-
 	internal class NodeTooltip : MonoBehaviour
 	{
 		private static NodeTooltip _instance;
@@ -26,12 +25,6 @@ namespace StudioNodeTweaks
 			var canvasScaler = newObj.AddComponent<CanvasScaler>();
 			canvasScaler.scaleFactor = 1;
 			canvasScaler.referencePixelsPerUnit = 100;
-
-			/* No raycaster as this doesn't need it.
-			var graphicRaycaster = newObj.AddComponent<GraphicRaycaster>();
-			graphicRaycaster.ignoreReversedGraphics = true;
-			graphicRaycaster.blockingObjects = GraphicRaycaster.BlockingObjects.None;
-			*/
 
 			var managerObj = new GameObject("Tooltip Manager");
 			var managerRectTransform = managerObj.AddComponent<RectTransform>();
@@ -95,11 +88,6 @@ namespace StudioNodeTweaks
 
 		internal void Update()
 		{
-			/*
-			RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)transform.parent.transform,
-				Input.mousePosition, null, out var point2LocalPoint);
-			transform.localPosition = point2LocalPoint;
-			*/
 			var parentRectTransform = (RectTransform)gameObject.transform.parent;
 
 			var newPosition = Input.mousePosition / parentRectTransform.localScale.x;

@@ -31,7 +31,7 @@ namespace StudioNodeTweaks
 #endif
 
 			if (StudioNodeTweaks._pluginInstance.ColorConfigDictionary.TryGetValue(transformName.ToLower(),
-				    out var config))
+					out var config))
 			{
 #if DEBUG
 				StudioNodeTweaks._pluginLogger.LogInfo("Color found! Applying...");
@@ -40,19 +40,6 @@ namespace StudioNodeTweaks
 				guideObject.guideSelect.color = config.Value;
 				config.SettingChanged += (sender, args) => { AssignNodeColor(guideObject); };
 			}
-
-			/*
-			StudioNodeTweaks._pluginLogger.LogInfo("Nothing... gonna check if it's a root bone...");
-	
-			if (transformName.StartsWith("ChaF"))
-			{
-				guideObject.guideSelect.color = new Color(1f,0f,0.9f);
-			}
-			else if(transformName.StartsWith("ChaM"))
-			{
-				guideObject.guideSelect.color = new Color(0.3f, 1f, 1f);
-			}
-			*/
 		}
 
 		private GuideObject _guideObject;

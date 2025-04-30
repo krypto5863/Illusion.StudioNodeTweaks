@@ -10,7 +10,6 @@ using AIChara;
 
 namespace StudioNodeTweaks
 {
-
 	internal class MouseOverNodeTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	{
 		private static readonly Dictionary<string, string> BoneInfoNames;
@@ -73,7 +72,7 @@ namespace StudioNodeTweaks
 			{ "cf_j_mune_nip02_l", "L. Nipple" },
 			{ "cf_j_mune_nip01_r", "R. Areola" },
 			{ "cf_j_mune_nip02_r", "R. Nipple" },
-			
+
 			{"cf_j_hand_r", "R. Hand"},
 			{"cf_j_hand_l", "L. Hand"},
 			{"cf_j_armlow01_r", "R. Elbow"},
@@ -232,7 +231,7 @@ namespace StudioNodeTweaks
 
 			//HS2 uses the same IK bone names as KKS just without the first letter.
 			if (BonesUserFriendlyNames.TryGetValue(boneName.ToLower(), out _textToTooltip) == false &&
-			    BoneInfoNames.TryGetValue(boneName.ToLower(), out _textToTooltip) == false)
+				BoneInfoNames.TryGetValue(boneName.ToLower(), out _textToTooltip) == false)
 			{
 				_textToTooltip = boneName;
 			}

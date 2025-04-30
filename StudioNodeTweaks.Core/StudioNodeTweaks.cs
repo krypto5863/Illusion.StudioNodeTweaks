@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Configuration;
-using BepInEx.Logging;
 using HarmonyLib;
 using Studio;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
@@ -84,22 +83,6 @@ namespace StudioNodeTweaks
 			NodeTooltip.InitTooltip();
 		}
 
-		/*
-		private void OnSettingChanged(object sender, EventArgs e)
-		{
-			for (var i = ModifiedGuideObjects.Count - 1; i >= 0; i--)
-			{
-				if (ModifiedGuideObjects[i] == null)
-				{
-					ModifiedGuideObjects.RemoveAt(i);
-					continue;
-				}
-
-				AssignNodeColor(ModifiedGuideObjects[i]);
-			}
-		}
-		*/
-
 		[HarmonyPatch(typeof(AddObjectAssist), "AddIKTarget", typeof(OCIChar), typeof(IKCtrl), typeof(int),
 			typeof(Transform), typeof(bool), typeof(Transform), typeof(bool))]
 		[HarmonyPostfix]
@@ -110,13 +93,6 @@ namespace StudioNodeTweaks
 				NodeColorizer.AddComponent(__result.guideObject.guideSelect.transform);
 			}
 		}
-
-
-		/*
-		[HarmonyPatch(typeof(AddObjectAssist), "AddBoneGuide")]
-		[HarmonyPostfix]
-		private static void ColorizeNewBone(ref GuideObject __result) => NodeColorizer.AddComponent(__result.guideSelect.transform);
-		*/
 
 		[HarmonyPatch(typeof(GuideBase), "ConvertColor")]
 		[HarmonyPrefix]
