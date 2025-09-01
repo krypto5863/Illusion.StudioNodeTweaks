@@ -1,51 +1,69 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace StudioNodeTweaks
 {
-	internal class NodePulseEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
-	{
-		private Tweener _currentAnimation;
+    internal class NodePulseEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    {
+        private bool _isPulseEnabled = true;
+        private Vector3 _originalScale;
+        private float _offset = 0f;
+        
+        internal static NodePulseEffect AddComponent(Transform transform)
+        {
+            var newObj = new GameObject("Pulse Tweener");
+            newObj.transform.SetParent(transform.parent);
+            transform.SetParent(newObj.transform);
+            return newObj.AddComponent<NodePulseEffect>();
+        }
 
-		internal static NodePulseEffect AddComponent(Transform transform)
-		{
-			var newObj = new GameObject("Pulse Tweener");
-			newObj.transform.SetParent(transform.parent);
-			transform.SetParent(newObj.transform);
-			return newObj.AddComponent<NodePulseEffect>();
-		}
+        internal void Awake()
+        {
+            _originalScale = transform.localScale;
+        }
+        
+        private void Update()
+        {
+            if (!StudioNodeTweaks._pluginInstance._animateNodes.Value || !_isPulseEnabled)
+                return;
+            _offset += Time.deltaTime;
+            var scale = (1.1f + 0.1f * Mathf.Sin(_offset));
+            transform.localScale = scale * _originalScale;
+        }
 
-		internal void Awake()
-		{
-			transform.localScale = new Vector3(1, 1, 1);
-			_currentAnimation = transform.DOScale(transform.localScale * 1.20f, 1f).SetLoops(-1, LoopType.Yoyo);
-		}
+        internal void Reset()
+        {
+            transform.localScale = _originalScale;
+        }
+        
+        void OnDisable()
+        {
+            _isPulseEnabled = false;
+        }
+        
 
-		void OnDisable()
-		{
-			_currentAnimation.Pause();
-		}
+        void OnEnable()
+        {
+            _isPulseEnabled = true;
+        }
 
-		void OnEnable()
-		{
-			_currentAnimation.Play();
-		}
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            _isPulseEnabled = false;
+        }
 
-		public void OnPointerEnter(PointerEventData eventData)
-		{
-			_currentAnimation.Pause();
-		}
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            _isPulseEnabled = true;
+        }
 
-		public void OnPointerExit(PointerEventData eventData)
-		{
-			_currentAnimation.Play();
-		}
-
-		private void OnDestroy()
-		{
-			_currentAnimation.Kill();
-			_currentAnimation = null;
-		}
-	}
+        private void OnDestroy()
+        {
+            _isPulseEnabled = false;
+            transform.localScale = _originalScale;
+            Destroy(gameObject);
+        }
+    }
 }
