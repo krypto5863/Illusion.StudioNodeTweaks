@@ -4,6 +4,7 @@ using HarmonyLib;
 using Studio;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using BepInEx.Logging;
 using UnityEngine;
 
 namespace StudioNodeTweaks
@@ -26,7 +27,6 @@ namespace StudioNodeTweaks
 		internal static ManualLogSource PluginLogger => _pluginInstance.Logger;
 #endif
 
-		internal ConfigEntry<bool> _animateNodes;
 		internal ConfigEntry<bool> _nodeTooltip;
 
 		internal ConfigEntry<bool> _enableCustomColors;
@@ -40,7 +40,6 @@ namespace StudioNodeTweaks
 			_pluginInstance = this;
 			Harmony.CreateAndPatchAll(typeof(StudioNodeTweaks));
 
-			_animateNodes = Config.Bind("Node Settings", "Animate Nodes With Pulse", true, "Restart Required");
 			_nodeTooltip = Config.Bind("Node Settings", "Show Node Tooltip", true);
 
 			_enableCustomColors = Config.Bind("Color Settings", "Use Custom IK Colors", true, "Restart Required");
@@ -115,13 +114,8 @@ namespace StudioNodeTweaks
 
 		[HarmonyPatch(typeof(GuideObjectManager), "Add")]
 		[HarmonyPostfix]
-		private static void AddPulseToObj(ref GuideObject __result)
+		private static void AddMouseOverModal(ref GuideObject __result)
 		{
-			if (_pluginInstance._animateNodes.Value)
-			{
-				NodePulseEffect.AddComponent(__result.guideSelect.transform);
-			}
-
 			MouseOverNodeTooltip.AddComponent(__result.guideSelect.transform);
 		}
 	}

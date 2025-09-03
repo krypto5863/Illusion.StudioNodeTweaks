@@ -11,7 +11,6 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)MouseOverNodeTooltip.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NodeColorizer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)NodePulseEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NodeTooltip.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StudioNodeTweaks.cs" />
   </ItemGroup>
